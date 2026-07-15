@@ -5,7 +5,7 @@ import { getProducts } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Shop",
-  description: "Browse our collection of faith-rooted aesthetic apparel.",
+  description: "Shop Covenant Apparel.",
 };
 
 export default async function ShopPage() {

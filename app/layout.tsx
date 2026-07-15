@@ -11,18 +11,16 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: {
-    default: "Covenant Apparel — Faith-Rooted Aesthetic Clothing",
+    default: "Covenant Apparel",
     template: "%s | Covenant Apparel",
   },
-  description:
-    "Clean, aesthetic Christian apparel. Graphic tees, hoodies, and accessories designed for those who wear their conviction.",
-  keywords: ["Christian clothing", "faith apparel", "graphic tees", "aesthetic clothing"],
+  description: "Covenant Apparel",
   icons: {
     icon: "/favicon.svg",
   },
   openGraph: {
     title: "Covenant Apparel",
-    description: "Faith-rooted aesthetic clothing. Wear your conviction.",
+    description: "Covenant Apparel",
     type: "website",
     locale: "en_US",
     siteName: "Covenant Apparel",
