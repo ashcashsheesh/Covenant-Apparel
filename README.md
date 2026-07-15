@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Covenant Apparel
+
+A custom e-commerce website for Covenant Apparel — a faith-rooted clothing brand with clean, aesthetic designs.
+
+## Stack
+
+- **Next.js 16** (App Router)
+- **Tailwind CSS 4**
+- **Supabase** (products, orders, storage)
+- **Stripe Checkout** (payments — no monthly fee)
+- **Resend** (transactional email)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
+cp .env.example .env.local
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The site works out of the box with seed product data. Connect Supabase and Stripe when you're ready to accept real orders.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables
 
-## Learn More
+Copy `.env.example` to `.env.local` and fill in:
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Required | Description |
+|---|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | For DB | Supabase project URL |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | For DB | Supabase anon key |
+| `SUPABASE_SERVICE_ROLE_KEY` | For orders/admin | Supabase service role key |
+| `STRIPE_SECRET_KEY` | For checkout | Stripe secret key |
+| `STRIPE_WEBHOOK_SECRET` | For orders | Stripe webhook signing secret |
+| `RESEND_API_KEY` | For email | Resend API key |
+| `NEXT_PUBLIC_ADMIN_PASSWORD` | For admin | Password for `/admin` dashboard |
+| `NEXT_PUBLIC_SITE_URL` | For SEO | Production site URL |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Database Setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Create a project at [supabase.com](https://supabase.com)
+2. Run the SQL in `supabase/schema.sql` in the Supabase SQL Editor
+3. Add your Supabase keys to `.env.local`
 
-## Deploy on Vercel
+## Stripe Setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Create an account at [stripe.com](https://stripe.com)
+2. Add `STRIPE_SECRET_KEY` to `.env.local`
+3. For local webhooks: `stripe listen --forward-to localhost:3000/api/webhooks/stripe`
+4. Copy the webhook signing secret to `STRIPE_WEBHOOK_SECRET`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Admin Dashboard
+
+Visit `/admin/login` and sign in with your `NEXT_PUBLIC_ADMIN_PASSWORD`.
+
+From the dashboard you can:
+- View and manage products
+- View orders after Stripe checkout
+
+## Deploy
+
+Deploy to [Vercel](https://vercel.com):
+
+1. Push to GitHub
+2. Import the repo in Vercel
+3. Add all environment variables
+4. Connect your custom domain
+
+## Pages
+
+- `/` — Homepage
+- `/shop` — Product catalog with filters
+- `/shop/[slug]` — Product detail
+- `/cart` — Shopping cart
+- `/about`, `/lookbook`, `/faq`, `/contact`, `/size-guide`
+- `/shipping-returns`, `/privacy`, `/terms`
+- `/admin` — Admin dashboard
