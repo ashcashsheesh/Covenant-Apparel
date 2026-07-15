@@ -15,30 +15,30 @@ export function CartItemRow({ item }: CartItemRowProps) {
 
   return (
     <div className="flex gap-4">
-      <div className="relative h-24 w-20 shrink-0 overflow-hidden bg-charcoal/5">
+      <div className="relative h-24 w-20 shrink-0 overflow-hidden bg-black/5">
         <Image src={item.image} alt={item.name} fill className="object-cover" />
       </div>
       <div className="flex flex-1 flex-col justify-between">
         <div className="flex justify-between">
           <div>
-            <p className="text-sm text-charcoal">{item.name}</p>
-            <p className="mt-0.5 text-xs text-stone">Size: {item.size}</p>
+            <p className="text-sm font-semibold text-black">{item.name}</p>
+            <p className="mt-0.5 text-xs text-black/60">Size: {item.size}</p>
           </div>
           <button
             onClick={() => removeItem(item.productId, item.size)}
             aria-label="Remove item"
-            className="text-stone hover:text-charcoal"
+            className="text-black/40 hover:text-black"
           >
             <X size={16} />
           </button>
         </div>
         <div className="flex items-center justify-between">
-          <div className="flex items-center border border-charcoal/20">
+          <div className="flex items-center border border-black/20">
             <button
               onClick={() =>
                 updateQuantity(item.productId, item.size, item.quantity - 1)
               }
-              className="px-2 py-1 text-charcoal hover:bg-charcoal/5"
+              className="px-2 py-1 text-black hover:bg-black/5"
               aria-label="Decrease quantity"
             >
               <Minus size={14} />
@@ -48,13 +48,13 @@ export function CartItemRow({ item }: CartItemRowProps) {
               onClick={() =>
                 updateQuantity(item.productId, item.size, item.quantity + 1)
               }
-              className="px-2 py-1 text-charcoal hover:bg-charcoal/5"
+              className="px-2 py-1 text-black hover:bg-black/5"
               aria-label="Increase quantity"
             >
               <Plus size={14} />
             </button>
           </div>
-          <p className="text-sm text-charcoal">
+          <p className="text-sm font-semibold text-black">
             {formatPrice(item.price * item.quantity)}
           </p>
         </div>

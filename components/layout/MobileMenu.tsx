@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import Link from "next/link";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavLinks } from "./NavLinks";
@@ -32,7 +31,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-50 bg-cream md:hidden"
+          className="fixed inset-0 z-50 bg-white md:hidden"
         >
           <div className="flex h-full flex-col px-6 py-6">
             <div className="flex items-center justify-between">
@@ -40,20 +39,13 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <button
                 onClick={onClose}
                 aria-label="Close menu"
-                className="p-2 text-charcoal"
+                className="p-2 text-black"
               >
                 <X size={24} />
               </button>
             </div>
-            <div className="flex flex-1 flex-col justify-center gap-8">
+            <div className="flex flex-1 flex-col justify-center">
               <NavLinks onClick={onClose} />
-              <Link
-                href="/contact"
-                onClick={onClose}
-                className="text-sm uppercase tracking-[0.15em] text-charcoal/60"
-              >
-                Contact
-              </Link>
             </div>
           </div>
         </motion.div>

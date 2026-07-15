@@ -1,12 +1,58 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, ShoppingBag } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Logo } from "./Logo";
 import { NavLinks } from "./NavLinks";
 import { MobileMenu } from "./MobileMenu";
 import { useCartStore } from "@/lib/cart-store";
+import { cn } from "@/lib/utils";
+
+function CartLink({
+  count,
+  onClick,
+  className,
+}: {
+  count: number;
+  onClick?: () => void;
+  className?: string;
+}) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const label = mounted && count > 0 ? `Cart (${count})` : "Cart";
+
+  if (onClick) {
+    return (
+      <button
+        onClick={onClick}
+        className={cn(
+          "text-sm font-normal text-black transition-opacity hover:opacity-60",
+          className
+        )}
+      >
+        {label}
+      </button>
+    );
+  }
+
+  return (
+    <Link
+      href="/cart"
+      onClick={onClick}
+      className={cn(
+        "text-sm font-normal text-black transition-opacity hover:opacity-60",
+        className
+      )}
+    >
+      {label}
+    </Link>
+  );
+}
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,49 +61,27 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-charcoal/10 bg-cream/95 backdrop-blur-sm">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:h-20">
+      <header className="border-b border-black bg-white">
+        <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:h-[72px]">
           <button
             onClick={() => setMenuOpen(true)}
-            className="p-2 text-charcoal md:hidden"
+            className="relative z-10 p-2 text-black md:hidden"
             aria-label="Open menu"
           >
             <Menu size={22} />
           </button>
 
-          <div className="md:flex-1">
-            <Logo className="mx-auto md:mx-0" />
-          </div>
-
-          <div className="hidden flex-1 justify-center md:flex">
+          <div className="hidden md:flex md:flex-1 md:items-center">
             <NavLinks />
           </div>
 
-          <div className="flex flex-1 items-center justify-end gap-2">
-            <Link
-              href="/cart"
-              className="relative p-2 text-charcoal transition-colors hover:text-stone md:hidden"
-              aria-label="Cart"
-            >
-              <ShoppingBag size={22} />
-              {count > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center bg-charcoal text-[10px] text-cream">
-                  {count}
-                </span>
-              )}
-            </Link>
-            <button
-              onClick={openCart}
-              className="relative hidden p-2 text-charcoal transition-colors hover:text-stone md:block"
-              aria-label="Open cart"
-            >
-              <ShoppingBag size={22} />
-              {count > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center bg-charcoal text-[10px] text-cream">
-                  {count}
-                </span>
-              )}
-            </button>
+          <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
+            <Logo />
+          </div>
+
+          <div className="relative z-10 flex items-center justify-end md:flex-1">
+            <CartLink count={count} onClick={openCart} className="hidden md:block" />
+            <CartLink count={count} className="md:hidden" />
           </div>
         </div>
       </header>

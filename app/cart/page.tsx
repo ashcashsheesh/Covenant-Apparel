@@ -33,12 +33,12 @@ export default function CartPage() {
 
   return (
     <SiteLayout>
-      <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
-        <h1 className="font-serif text-3xl text-charcoal md:text-4xl">Your Cart</h1>
+      <div className="mx-auto max-w-3xl px-6 py-12 md:py-16">
+        <h1 className="text-2xl font-semibold text-black md:text-3xl">Cart</h1>
 
         {items.length === 0 ? (
           <div className="mt-16 text-center">
-            <p className="text-stone">Your cart is empty.</p>
+            <p className="text-black/60">Your cart is empty.</p>
             <Link href="/shop" className="mt-6 inline-block">
               <Button variant="outline">Continue Shopping</Button>
             </Link>
@@ -50,25 +50,22 @@ export default function CartPage() {
                 <CartItemRow key={`${item.productId}-${item.size}`} item={item} />
               ))}
             </div>
-            <div className="mt-12 border-t border-charcoal/10 pt-8">
+            <div className="mt-12 border-t border-black/10 pt-8">
               <div className="flex justify-between text-lg">
-                <span className="text-stone">Subtotal</span>
-                <span className="font-medium text-charcoal">{formatPrice(subtotal())}</span>
+                <span className="text-black/60">Subtotal</span>
+                <span className="font-semibold text-black">{formatPrice(subtotal())}</span>
               </div>
-              <p className="mt-2 text-sm text-stone">
-                Shipping and taxes calculated at checkout.
-              </p>
               <Button
                 onClick={handleCheckout}
                 disabled={checkingOut}
                 className="mt-6 w-full"
                 size="lg"
               >
-                {checkingOut ? "Processing..." : "Proceed to Checkout"}
+                {checkingOut ? "Processing..." : "Checkout"}
               </Button>
               <button
                 onClick={clearCart}
-                className="mt-4 w-full text-center text-xs uppercase tracking-[0.15em] text-stone hover:text-charcoal"
+                className="mt-4 w-full text-center text-sm text-black/60 hover:text-black"
               >
                 Clear Cart
               </button>

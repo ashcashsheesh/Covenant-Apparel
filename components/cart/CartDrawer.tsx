@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { X, ShoppingBag } from "lucide-react";
+import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCartStore } from "@/lib/cart-store";
 import { formatPrice } from "@/lib/utils";
@@ -50,7 +50,7 @@ export function CartDrawer() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-charcoal/40"
+            className="fixed inset-0 z-50 bg-black/40"
             onClick={closeCart}
           />
           <motion.div
@@ -58,15 +58,12 @@ export function CartDrawer() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.3 }}
-            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col bg-cream shadow-xl"
+            className="fixed right-0 top-0 z-50 flex h-full w-full max-w-md flex-col bg-white shadow-xl"
           >
-            <div className="flex items-center justify-between border-b border-charcoal/10 px-6 py-5">
-              <div className="flex items-center gap-2">
-                <ShoppingBag size={20} />
-                <h2 className="text-sm uppercase tracking-[0.15em]">
-                  Cart ({count})
-                </h2>
-              </div>
+            <div className="flex items-center justify-between border-b border-black/10 px-6 py-5">
+              <h2 className="text-sm font-semibold">
+                Cart{count > 0 ? ` (${count})` : ""}
+              </h2>
               <button onClick={closeCart} aria-label="Close cart" className="p-1">
                 <X size={20} />
               </button>
@@ -74,8 +71,7 @@ export function CartDrawer() {
 
             {items.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center px-6">
-                <ShoppingBag size={48} className="text-stone/30" />
-                <p className="mt-4 text-stone">Your cart is empty</p>
+                <p className="text-black/60">Your cart is empty</p>
                 <Link href="/shop" onClick={closeCart} className="mt-6">
                   <Button variant="outline" size="sm">
                     Continue Shopping
@@ -94,14 +90,11 @@ export function CartDrawer() {
                     ))}
                   </div>
                 </div>
-                <div className="border-t border-charcoal/10 px-6 py-6">
+                <div className="border-t border-black/10 px-6 py-6">
                   <div className="flex justify-between text-sm">
-                    <span className="text-stone">Subtotal</span>
-                    <span className="text-charcoal">{formatPrice(subtotal())}</span>
+                    <span className="text-black/60">Subtotal</span>
+                    <span className="font-semibold text-black">{formatPrice(subtotal())}</span>
                   </div>
-                  <p className="mt-2 text-xs text-stone">
-                    Shipping and taxes calculated at checkout.
-                  </p>
                   <Button
                     onClick={handleCheckout}
                     disabled={checkingOut}
@@ -112,7 +105,7 @@ export function CartDrawer() {
                   <Link
                     href="/cart"
                     onClick={closeCart}
-                    className="mt-3 block text-center text-xs uppercase tracking-[0.15em] text-stone hover:text-charcoal"
+                    className="mt-3 block text-center text-sm text-black/60 hover:text-black"
                   >
                     View Full Cart
                   </Link>

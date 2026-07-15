@@ -2,13 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import type { Product, ProductSize } from "@/lib/types";
 import { formatPrice } from "@/lib/utils";
 import { useCartStore } from "@/lib/cart-store";
 import { SizeSelector } from "@/components/shop/SizeSelector";
 import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
 
 interface ProductDetailProps {
   product: Product;
@@ -52,10 +50,10 @@ export function ProductDetail({ product }: ProductDetailProps) {
   }
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-12 md:py-20">
-      <div className="grid gap-12 md:grid-cols-2">
+    <div className="mx-auto max-w-7xl px-6 py-12 md:py-16">
+      <div className="grid gap-10 md:grid-cols-2 md:gap-16">
         <div>
-          <div className="relative aspect-square overflow-hidden bg-charcoal/5">
+          <div className="relative aspect-square overflow-hidden bg-black/5">
             <Image
               src={product.images[activeImage]}
               alt={product.name}
@@ -72,7 +70,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
                   key={img}
                   onClick={() => setActiveImage(i)}
                   className={`relative h-20 w-20 overflow-hidden border-2 transition-colors ${
-                    activeImage === i ? "border-charcoal" : "border-transparent"
+                    activeImage === i ? "border-black" : "border-transparent"
                   }`}
                 >
                   <Image src={img} alt="" fill className="object-cover" />
@@ -83,27 +81,16 @@ export function ProductDetail({ product }: ProductDetailProps) {
         </div>
 
         <div className="flex flex-col justify-center">
-          <Badge>{product.category}</Badge>
-          <h1 className="mt-4 font-serif text-3xl text-charcoal md:text-4xl">
+          <h1 className="text-2xl font-semibold text-black md:text-3xl">
             {product.name}
           </h1>
-          <p className="mt-2 text-lg text-stone">{formatPrice(product.price)}</p>
-          <p className="mt-6 text-sm leading-relaxed text-stone">
+          <p className="mt-2 text-lg text-black/70">{formatPrice(product.price)}</p>
+          <p className="mt-6 text-sm leading-relaxed text-black/70">
             {product.description}
           </p>
 
           <div className="mt-8">
-            <div className="flex items-center justify-between">
-              <p className="text-xs uppercase tracking-[0.15em] text-charcoal">
-                Select Size
-              </p>
-              <Link
-                href="/size-guide"
-                className="text-xs text-stone underline hover:text-charcoal"
-              >
-                Size Guide
-              </Link>
-            </div>
+            <p className="text-sm font-semibold text-black">Size</p>
             <div className="mt-3">
               <SizeSelector
                 sizes={sizes}
@@ -113,7 +100,7 @@ export function ProductDetail({ product }: ProductDetailProps) {
               />
             </div>
             {selectedSize && selectedStock !== null && selectedStock <= 5 && selectedStock > 0 && (
-              <p className="mt-2 text-xs text-stone">
+              <p className="mt-2 text-xs text-black/60">
                 Only {selectedStock} left in size {selectedSize}
               </p>
             )}
@@ -125,14 +112,8 @@ export function ProductDetail({ product }: ProductDetailProps) {
             className="mt-8 w-full"
             size="lg"
           >
-            {added ? "Added to Cart ✓" : "Add to Cart"}
+            {added ? "Added to Cart" : "Add to Cart"}
           </Button>
-
-          <div className="mt-8 space-y-2 border-t border-charcoal/10 pt-8 text-sm text-stone">
-            <p>• Premium materials, ethically sourced</p>
-            <p>• Free shipping on orders over $75</p>
-            <p>• 30-day hassle-free returns</p>
-          </div>
         </div>
       </div>
     </div>

@@ -26,10 +26,10 @@ export function SizeSelector({
             onClick={() => !outOfStock && onSelect(size)}
             disabled={outOfStock}
             className={cn(
-              "min-w-[3rem] border px-4 py-2.5 text-sm transition-all",
+              "min-w-[3rem] border px-4 py-2.5 text-sm font-medium transition-colors",
               selected === size
-                ? "border-charcoal bg-charcoal text-cream"
-                : "border-charcoal/20 text-charcoal hover:border-charcoal",
+                ? "border-black bg-black text-white"
+                : "border-black/20 text-black hover:border-black",
               outOfStock && "cursor-not-allowed opacity-30 line-through"
             )}
           >

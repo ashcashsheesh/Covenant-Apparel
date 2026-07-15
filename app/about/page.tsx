@@ -3,66 +3,57 @@ import { SiteLayout } from "@/components/layout/SiteLayout";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Learn about Covenant Apparel — our mission, values, and story.",
+  description: "Learn about Covenant Apparel.",
 };
 
 export default function AboutPage() {
   return (
     <SiteLayout>
-      <div className="mx-auto max-w-3xl px-6 py-12 md:py-20">
-        <p className="text-xs uppercase tracking-[0.3em] text-stone">Our Story</p>
-        <h1 className="mt-2 font-serif text-4xl text-charcoal md:text-5xl">
-          About Covenant
-        </h1>
+      <div className="mx-auto max-w-2xl px-6 py-12 md:py-16">
+        <h1 className="text-2xl font-semibold text-black md:text-3xl">About</h1>
 
-        <div className="mt-12 space-y-8 text-sm leading-relaxed text-stone">
+        <div className="mt-8 space-y-6 text-sm leading-relaxed text-black/70">
           <p>
-            Covenant Apparel was born from a simple belief: faith doesn&apos;t have to
-            be loud to be powerful. We create clothing that carries meaning — pieces
-            you&apos;re proud to wear every day, not just on Sunday.
-          </p>
-          <p>
-            Every design starts with intention. We blend clean, contemporary aesthetics
-            with subtle references to the values that ground us — grace, mercy, faith,
-            and redemption. Our graphics are bold enough to start conversations, but
-            refined enough to fit seamlessly into your everyday wardrobe.
+            Covenant Apparel began as a dream I had in middle school. What started as a
+            simple idea grew into something much greater as my faith deepened. Looking
+            back, I can see that God was shaping not only the vision for this brand, but
+            also my heart behind it.
           </p>
 
-          <h2 className="pt-4 font-serif text-2xl text-charcoal">Our Mission</h2>
           <p>
-            To create premium apparel that helps people express their faith with
-            confidence and style — without compromise. We believe what you wear can
-            be both a statement of identity and a work of art.
+            I never wanted Covenant to be just another clothing brand. I wanted to create
+            apparel that reflects my faith, points people to Jesus, and reminds us to
+            live boldly for Him.
           </p>
 
-          <h2 className="pt-4 font-serif text-2xl text-charcoal">Our Values</h2>
-          <ul className="space-y-3">
-            <li>
-              <strong className="text-charcoal">Quality First</strong> — Premium
-              materials and construction that lasts.
-            </li>
-            <li>
-              <strong className="text-charcoal">Intentional Design</strong> — Every
-              piece tells a story worth sharing.
-            </li>
-            <li>
-              <strong className="text-charcoal">Ethical Production</strong> — We partner
-              with manufacturers who share our standards.
-            </li>
-            <li>
-              <strong className="text-charcoal">Community</strong> — Building a family
-              of believers who inspire each other.
-            </li>
-          </ul>
-
-          <h2 className="pt-4 font-serif text-2xl text-charcoal">A Note from the Founder</h2>
           <p>
-            I started Covenant because I was tired of choosing between clothes that
-            looked good and clothes that meant something. This brand is my answer to
-            that — apparel designed for people who live with purpose, walk with faith,
-            and refuse to blend in.
+            As I became more involved in the Church, I saw faithful churches struggling
+            financially. Ministries were limited not because they lacked passion, but
+            because they lacked the resources to continue the work God had called them to
+            do. That is why Covenant Apparel donates 100% of its profits to churches and
+            gospel-centered ministries. Every purchase is an opportunity to strengthen the
+            local Church and help share the hope of the Gospel.
           </p>
-          <p className="font-serif italic text-charcoal">— The Covenant Team</p>
+
+          <p>
+            The name Covenant is rooted in God&apos;s unchanging faithfulness. Even when we
+            fall short, He remains faithful. That truth is the foundation of everything
+            this brand stands for.
+          </p>
+
+          <p>
+            Thank you for being part of this mission. Together, we can create something
+            that points people to Christ and makes an eternal impact.
+          </p>
+
+          <p className="italic">
+            Whatever you do, do it all for the glory of God. — 1 Corinthians 10:31
+          </p>
+
+          <div className="pt-2 text-black">
+            <p>Sincerely,</p>
+            <p className="mt-1">Asher (founder)</p>
+          </div>
         </div>
       </div>
     </SiteLayout>

@@ -21,13 +21,13 @@ export function ProductCard({ product }: ProductCardProps) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className="relative aspect-square overflow-hidden bg-charcoal/5">
+      <div className="relative aspect-square overflow-hidden bg-black/5">
         <Image
           src={product.images[0]}
           alt={product.name}
           fill
-          className={`object-cover transition-all duration-500 ${
-            hovered && secondImage ? "opacity-0 scale-105" : "opacity-100"
+          className={`object-cover transition-opacity duration-300 ${
+            hovered && secondImage ? "opacity-0" : "opacity-100"
           }`}
           sizes="(max-width: 768px) 50vw, 25vw"
         />
@@ -36,16 +36,16 @@ export function ProductCard({ product }: ProductCardProps) {
             src={secondImage}
             alt={`${product.name} alternate view`}
             fill
-            className={`object-cover transition-all duration-500 ${
-              hovered ? "opacity-100 scale-105" : "opacity-0"
+            className={`object-cover transition-opacity duration-300 ${
+              hovered ? "opacity-100" : "opacity-0"
             }`}
             sizes="(max-width: 768px) 50vw, 25vw"
           />
         )}
       </div>
-      <div className="mt-4">
-        <h3 className="text-sm text-charcoal">{product.name}</h3>
-        <p className="mt-1 text-sm text-stone">{formatPrice(product.price)}</p>
+      <div className="mt-3">
+        <h3 className="text-sm font-semibold text-black">{product.name}</h3>
+        <p className="mt-1 text-sm text-black/60">{formatPrice(product.price)}</p>
       </div>
     </Link>
   );

@@ -1,18 +1,14 @@
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { Hero } from "@/components/home/Hero";
+import { InfoBar } from "@/components/home/InfoBar";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
-import { BrandStatement } from "@/components/home/BrandStatement";
-import { LookbookTeaser } from "@/components/home/LookbookTeaser";
-import { Newsletter } from "@/components/home/Newsletter";
 
 export default function Home() {
   return (
     <SiteLayout>
       <Hero />
+      <InfoBar />
       <FeaturedProducts />
-      <BrandStatement />
-      <LookbookTeaser />
-      <Newsletter />
     </SiteLayout>
   );
 }
